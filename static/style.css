@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Laila:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap');
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	position: relative;
+	font-family: Verdana, sans-serif;
+	background-color: #c4c4c4;
+
+	max-height: 100%;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	background-color: #333;
+}
+header {
+	display: flex;
+	justify-content: center;
+	background-color: #685fd0;
+}
+header > p {
+	font-family: Laila;
+	color: white;
+	letter-spacing: 3px;
+	font-size: 32px;
+	padding: 5px;
+}
+.header-text {
+	text-transform: uppercase;
+}
+
+.left-nav,
+.right-nav {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	gap: 1rem;
+	height: 100%;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: white;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	display: block;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.wrapper {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.container-top {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #ffffff;
+}
+
+.mp {
+	font-size: 50px;
+	text-align: center;
+	margin-bottom: 1rem;
+	padding-top: 20px;
+}
+
+.main-text {
+	text-align: justify;
+	font-size: 20px;
+	padding: 20px;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.container-mid {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+
+	background-color: #f3f5ff;
+}
+.icon-one,
+.icon-two,
+.icon-three {
+	font-size: 80px;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	color: #685fd0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.icon-two {
+	padding-left: 0.4em;
+}
+.icon-two-space {
+	display: flex;
+	gap: 1rem;
+}
+.icon-one > p,
+.icon-two > p,
+.icon-three > p {
+	padding-top: 20px;
+	font-size: 20px;
+	align-self: center;
+	color: black;
+}
+.container-bottom {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #f3f5ff;
+	padding-top: 35px;
+	padding-bottom: 60px;
+}
+
+.dancing {
+	font-family: 'Dancing Script';
+	font-weight: 200;
+	font-size: 60px;
+	color: #685fd0;
+}
+footer {
+	height: 60px;
+	background: #666;
+}
