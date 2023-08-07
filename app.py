@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, flash, render_template
+from flask import Flask, request, redirect, url_for, flash, render_template, session
 
 app = Flask(__name__)
 
@@ -52,18 +52,34 @@ DANE = [{
 #########
 @app.route('/test', methods=['GET', 'POST'])
 def test():
+    if 'question_index' not in session:
+        session['question_index'] = 0
+        session['points'] = 0
+
     if request.method == 'POST':
-        punkty = 0
         odpowiedzi = request.form
+        current_question = DANE[session['question_index']]
 
-        for pnr, odp in odpowiedzi.items():
-            if odp == DANE[int(pnr)]['odpok']:
-                punkty += 1
+        if odpowiedzi.get('odpowiedz') == current_question['odpok']:
+            session['points'] += 1
 
-        flash('Liczba poprawnych odpowiedzi, to: {0}'.format(punkty))
-        return redirect(url_for('test'))
-    return render_template('test.html',pytania=DANE)
+        session['question_index'] += 1
 
+        if session['question_index'] >= len(DANE):
+            flash('Liczba poprawnych odpowiedzi, to: {0}'.format(session['points']))
+            session.pop('question_index')
+            session.pop('points')
+            return redirect(url_for('wynik'))
+
+    if 'question_index' in session:
+        current_question = DANE[session['question_index']]
+        return render_template('test.html', pytanie=current_question)
+
+    return redirect(url_for('/wynik'))
+
+@app.route('/wynik')
+def wynik():
+    return render_template('wynik.html')
 
 @app.route('/login')
 def login():

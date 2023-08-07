@@ -4,15 +4,16 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kurs</title>
-		<link
+    <title>Kurs</title>
+    <link
 			rel="stylesheet"
-			href=" {{ url_for('static', filename='style.css') }}" />
-		<script
+			href=" {{ url_for('static', filename='style.css') }}"
+    />
+        <script
 			src="https://kit.fontawesome.com/044e03b4b1.js"
 			crossorigin="anonymous"></script>
-	</head>
-	<body>
+</head>
+<body>
 		<header class="wrapper">
 			<p>cacti<span class="header-text">design</span></p>
 		</header>
@@ -31,21 +32,15 @@
 			</div>
 		</nav>
 		<main class="wrapper">
-			<div class="container-top">
-                <h2>TEST1</h2>
+			  <p>
+                    {% for message in get_flashed_messages() %}
+                      {{ message }}
+                    {% endfor %}
+                  </p>
 
-				<form method="POST" action="{{ url_for('test') }}">
-        <p>{{ pytanie['pytanie'] }}</p>
-                    {% for odpowiedz in pytanie['odpowiedzi'] %}
-            <input type="radio" name="odpowiedz" value="{{ odpowiedz }}"
-                   {% if 'answers' in session and session['answers'].get(loop.index0) == odpowiedz %}checked{% endif %}>
-            {{ odpowiedz }}<br>
-        {% endfor %}
-        <input type="submit" value="Next">
-    </form>
 
-			</div>
 		</main>
-		<footer class="wrapper"></footer>
+		<footer class="wrapper">
+		</footer>
 	</body>
 </html>
