@@ -33,28 +33,9 @@
 		</nav>
 		<main class="wrapper">
 			<div class="container-top">
-                <h2>POSTĘPY</h2>
+				<h2>QUIZ</h2>
+
 			</div>
-            <table style="border-collapse: collapse; width: 300px;">
-                <tr>
-                    <td style="border: 1px solid black; padding: 10px;">Test 1</td>
-                    <td style="border: 1px solid black; padding: 10px;">{{tt1}}</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid black; padding: 10px;">Test 2</td>
-                    <td style="border: 1px solid black; padding: 10px;">{{tt2}}</td>
-                </tr>
-</table><br>
-            {% for points in user.points|reverse %}
-                        {% if loop.index <= 10 %}
-                <table style="border-collapse: collapse; width: 300px;">
-                <tr>
-                    <td style="border: 1px solid black; padding: 10px;">{{ points.data }}</td>
-                    <td style="border: 1px solid black; padding: 10px;">{{ points.points}}</td>
-                </tr>
-            </table>
-                {%  endif %}
-            {% endfor %}
 		</main>
 		<footer class="wrapper">
 		</footer>
