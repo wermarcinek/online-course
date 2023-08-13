@@ -19,15 +19,28 @@
 		</header>
 		<nav class="wrapper">
 			<div class="left-nav">
+                {% if user.is_authenticated %}
 				<a class="nav-link" href="/20_marcinek/licencjat/mainPage">
                     <i class="fa-solid fa-house"></i></a>
 				<a class="nav-link" href="/20_marcinek/licencjat/course">nauka</a>
 				<a class="nav-link" href="/20_marcinek/licencjat/quizy">quiz</a>
 				<a class="nav-link" href="/20_marcinek/licencjat/progress">postępy</a>
+                {% else %}
+                <a class="nav-link" href="/20_marcinek/licencjat/mainPage">
+                    <i class="fa-solid fa-house"></i></a>
+				<a class="nav-link" href="/20_marcinek/licencjat/course">nauka</a>
+				<a class="nav-link" href="/20_marcinek/licencjat/quizy">quiz</a>
+                {% endif %}
 			</div>
 			<div class="right-nav">
                 {% if user.is_authenticated %}
-                <a class="nav-link" href="/20_marcinek/licencjat/logout">wyloguj</a>
+                    <div class="dropdown">
+                        <button>Konto</button>
+                    <div class="dropdown-options">
+                        <a href="/20_marcinek/licencjat/changepassword">ZMIANA HASŁA</a>
+                        <a href="/20_marcinek/licencjat/contact">KONTAKT</a>
+                        <a href="/20_marcinek/licencjat/logout">WYLOGUJ</a>
+                    </div></div>
                 {% else %}
 				<a class="nav-link" href="/20_marcinek/licencjat/login">zaloguj</a>
 				<a class="nav-link" href="/20_marcinek/licencjat/signup">zarejestruj</a>

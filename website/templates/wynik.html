@@ -37,7 +37,23 @@
                       {{ message }}
                     {% endfor %}
                   </p>
-
+<h1>Your Points History</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Attempt</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user_points in user_points_list %}
+            <tr>
+                <td>Attempt {{ loop.index }}</td>
+                <td>{{ user_points.points }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 		</main>
 		<footer class="wrapper">
