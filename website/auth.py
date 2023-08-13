@@ -26,17 +26,17 @@ def grafika():
 def progress():
     CU_name = current_user.first_name
     x = None
-    tt1 = Points.query.filter_by(data='test1').join(User).filter_by(first_name=CU_name).order_by(
+    tt1 = Points.query.filter_by(data='QUIZ1 - wprowadzenie').join(User).filter_by(first_name=CU_name).order_by(
         Points.points.desc()).first()
     if (tt1 == x):
-        tt1 = 'Nie brałeś udziału'
+        tt1 = 'Nie brałeś/aś udziału'
     else:
         tt1 = tt1.points
 
-    tt2 = Points.query.filter_by(data='test2').join(User).filter_by(first_name=CU_name).order_by(
+    tt2 = Points.query.filter_by(data='QUIZ2 - parametry techniczne stron').join(User).filter_by(first_name=CU_name).order_by(
         Points.points.desc()).first()
     if (tt2 == x):
-        tt2 = 'Nie brałeś udziału'
+        tt2 = 'Nie brałeś/aś udziału'
     else:
         tt2 = tt2.points
 
@@ -62,7 +62,7 @@ def quiz():
 
 @auth.route('/test1', methods=['GET', 'POST'])
 def test1():
-    nazwa='test1'
+    nazwa='QUIZ1 - wprowadzenie'
     if 'question_index' not in session:
         session['question_index'] = 0
         session['points'] = 0
@@ -97,7 +97,7 @@ def test1():
 
 @auth.route('/test2', methods=['GET', 'POST'])
 def test2():
-    nazwa='test2'
+    nazwa='QUIZ2 - parametry techniczne stron'
     if 'question_index' not in session:
         session['question_index'] = 0
         session['points'] = 0
