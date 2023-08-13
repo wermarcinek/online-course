@@ -34,7 +34,7 @@
 			<div class="container-top">
                 <h2>TEST1</h2>
 
-				<form method="POST" action="{{ url_for('auth.test') }}">
+				<form method="POST" action="{{ url_for('auth.test1') }}">
         <p>{{ pytanie['pytanie'] }}</p>
                     {% for odpowiedz in pytanie['odpowiedzi'] %}
             <input type="radio" name="odpowiedz" value="{{ odpowiedz }}"

@@ -34,8 +34,8 @@
         <main class="wrapper">
             <div class="container-top">
                 <h2>TEST2</h2>
-
-                <form method="POST" action="{{ url_for('auth.test2') }}">
+                    {# : ))))))))))))) #}
+{# : )))))) #}      <form method="POST" action="{{ url_for('auth.test2') }}"> {#//pamiętać żeby zmienić tego auth. kurwa mać :))) #}
                     <p>{{ pytanie['pytanie'] }}</p>
                     {% for odpowiedz in pytanie['odpowiedzi'] %} <input type="radio"
                     name="odpowiedz" value="{{ odpowiedz }}" {% if 'answers' in session

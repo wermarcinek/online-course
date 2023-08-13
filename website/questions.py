@@ -1,4 +1,4 @@
-DANE = [{
+DANE1 = [{
     'pytanie': 'Co to jest responsywność w kontekście projektowania stron internetowych?',  # pytanie
     'odpowiedzi': ['Technika tworzenia stron bez wykorzystania kodu', 'Umiejętność pisania zaawansowanego JavaScriptu', 'Technika dostosowywania strony do różnych rozmiarów ekranów', 'Proces tworzenia animacji na stronie'],  # możliwe odpowiedzi
     'odpok': 'Technika dostosowywania strony do różnych rozmiarów ekranów'},  # poprawna odpowiedź

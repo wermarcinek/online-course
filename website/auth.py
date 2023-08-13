@@ -60,8 +60,8 @@ def quiz():
     return render_template('quiz.html')
 
 
-@auth.route('/test', methods=['GET', 'POST'])
-def test():
+@auth.route('/test1', methods=['GET', 'POST'])
+def test1():
     nazwa='test1'
     if 'question_index' not in session:
         session['question_index'] = 0
@@ -69,14 +69,14 @@ def test():
 
     if request.method == 'POST':
         odpowiedzi = request.form
-        current_question = DANE[session['question_index']]
+        current_question = DANE1[session['question_index']]
 
         if odpowiedzi.get('odpowiedz') == current_question['odpok']:
             session['points'] += 1
 
         session['question_index'] += 1
 
-        if session['question_index'] >= len(DANE):
+        if session['question_index'] >= len(DANE1):
             points = session['points']
             session.pop('question_index')
             session.pop('points')
@@ -90,8 +90,8 @@ def test():
             return redirect(url_for('auth.wynik'))
 
     if 'question_index' in session:
-        current_question = DANE[session['question_index']]
-        return render_template('test.html', pytanie=current_question)
+        current_question = DANE1[session['question_index']]
+        return render_template('test1.html', pytanie=current_question)
 
     return redirect(url_for('/wynik'))
 
