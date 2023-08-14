@@ -1,76 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kurs</title>
-    <link
-			rel="stylesheet"
-			href=" {{ url_for('static', filename='style.css') }}"
-    />
-        <script
-			src="https://kit.fontawesome.com/044e03b4b1.js"
-			crossorigin="anonymous"></script>
-</head>
-<body>
-		<header class="wrapper"><div></div>
-			<p>cacti<span class="header-text">design</span></p>
-		</header>
-		<nav class="wrapper">
-			<div class="left-nav">
-                {% if user.is_authenticated %}
-				<a class="nav-link" href="/20_marcinek/licencjat/mainPage">
-                    <i class="fa-solid fa-house"></i></a>
-				<a class="nav-link" href="/20_marcinek/licencjat/course">nauka</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/quizy">quiz</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/progress">postępy</a>
-                {% else %}
-                <a class="nav-link" href="/20_marcinek/licencjat/mainPage">
-                    <i class="fa-solid fa-house"></i></a>
-				<a class="nav-link" href="/20_marcinek/licencjat/course">nauka</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/quizy">quiz</a>
-                {% endif %}
-			</div>
-			<div class="right-nav">
-                {% if user.is_authenticated %}
-                    <div class="dropdown">
-                        <button>Konto</button>
-                    <div class="dropdown-options">
-                        <a href="/20_marcinek/licencjat/changepassword">ZMIANA HASŁA</a>
-                        <a href="/20_marcinek/licencjat/contact">KONTAKT</a>
-                        <a href="/20_marcinek/licencjat/logout">WYLOGUJ</a>
-                    </div></div>
-                {% else %}
-				<a class="nav-link" href="/20_marcinek/licencjat/login">zaloguj</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/signup">zarejestruj</a>
-                {% endif %}
-			</div>
-		</nav>
-		<main class="wrapper">
-			<div class="container-top">
-				<h2 class="mp">O aplikacji</h2>
-				<p class="main-text">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ut vel
-					explicabo labore ex id doloribus maiores, possimus reiciendis. Alias
-					velit, expedita neque soluta aut consequuntur, in itaque iusto vitae
-					molestias porro? Commodi quos suscipit reprehenderit? Numquam incidunt
-					nesciunt dolores enim vitae perferendis voluptatem eveniet labore
-					suscipit, voluptas nostrum? Nulla beatae assumenda doloremque vero
-					possimus quam reprehenderit ex, similique quisquam quod voluptatum,
-					sint quaerat repellendus corporis delectus labore, accusamus eius. Ad
-					temporibus nulla, mollitia soluta harum obcaecati debitis repellat
-					tempora rerum amet quis, deserunt rem iusto voluptates. Qui ad iusto
-					temporibus vitae itaque veniam eum recusandae animi dolorum reiciendis
-					laborum blanditiis pariatur quae, impedit tenetur? Voluptate iste quas
-					quae unde dolor dolorem soluta excepturi? Maxime saepe pariatur
-					explicabo illo consectetur a quis totam, eveniet, odit commodi
-					accusamus veniam voluptatibus aliquid asperiores obcaecati nisi,
-					quibusdam exercitationem ipsum magni. Quas odit dolorum impedit,
-					cumque modi, numquam doloremque omnis porro accusamus nobis
-					cupiditate!
-				</p>
-			</div>
+{% extends 'base.html' %}
+{% block title %}Strona główna{% endblock %}
+{% block content %}
+
+
+    <h1 class="text-center display-2">O aplikacji</h1>
+            <hr>
+				<p class="text-start fs-4">
+                    Witaj w mojej aplikacji! Interesujesz się projektowaniem stron lub aplikacji? Ten kurs jest właśnie dla Ciebie. Bez względu na to, czy jesteś początkującym entuzjastą czy posiadasz już doświadczenie w tej dziedzinie, ten kurs pozwoli Ci zdobywać nową wiedzę oraz sprawdzać swoje umiejętności.</p>
+                    <h2 class="display-5">Odkryj tajniki projektowania w aplikacji</h2>
+    <p class="text-start fs-4"> Figma Dzięki temu kursowi zdobędziesz wiedzę, która na pewno pomoże Ci w obsłudze tej zaawansowanej aplikacji graficznej do projektowania stron internetowych. Dowiesz się jakie możliwości oraz narzędzia posiada Figma, a także jak wykorzystywać jej potencjał efektywnie i efektownie.</p>
+                     <h2 class="display-5"> Projektuj zachwycające strony internetowe</h2>
+    <p class="text-start fs-4">Poznasz tajniki projektowania przejrzystych, responsywnych i estetycznych stron internetowych oraz aplikacji, zapoznasz się z najważniejszymi elementami, które musi posiadać atrakcyjna strona internetowa. Gotowi zdobyć nowe umiejętności i wyróżnić się w świecie projektowania graficznego i tworzenia stron internetowych? Rozpocznij naukę i dołącz do kreatywnych umysłów już dziś!</p>
+
 			<div class="container-mid">
 				<div class="icon-one">
 					<i class="fa-solid fa-list-check"></i>
@@ -85,14 +26,7 @@
 				</div>
 				<div class="icon-three">
 					<i class="fa-solid fa-chart-column"></i>
-					<p>Zobacz swoje<br />postępy</p>
+					<p>Zobacz swoje postępy</p>
 				</div>
 			</div>
-			<div class="container-bottom">
-				<h3 class="dancing">Z miłości do designu!</h3>
-			</div>
-		</main>
-		<footer class="wrapper">
-		</footer>
-	</body>
-</html>
+{% endblock %}

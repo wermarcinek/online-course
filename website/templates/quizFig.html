@@ -1,43 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kurs</title>
-    <link
-			rel="stylesheet"
-			href=" {{ url_for('static', filename='style.css') }}"
-    />
-        <script
-			src="https://kit.fontawesome.com/044e03b4b1.js"
-			crossorigin="anonymous"></script>
-</head>
-<body>
-		<header class="wrapper">
-			<p>cacti<span class="header-text">design</span></p>
-		</header>
-		<nav class="wrapper">
-			<div class="left-nav">
-				<a class="nav-link" href="/20_marcinek/licencjat/mainPage"
-					><i class="fa-solid fa-house"></i
-				></a>
-				<a class="nav-link" href="/20_marcinek/licencjat/course">nauka</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/quizy">quiz</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/progress">postępy</a>
-			</div>
-			<div class="right-nav">
-				<a class="nav-link" href="/20_marcinek/licencjat/login">log in</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/signup">sign up</a>
-			</div>
-		</nav>
-		<main class="wrapper">
-			<div class="container-top">
-				<h2>QUIZ</h2>
-
-			</div>
+{% extends 'base.html' %}
+{% block title %}QUIZ{% endblock %}
+{% block content %}
+		<main>
+			<div class="text-center">
+				<h2 class="fw-bold pb-3">QUIZ</h2>
+				    <div class="d-grid gap-2 col-6 mx-auto">
+                        <a class="btn btn-dark" type="button" href="/20_marcinek/licencjat/">QUIZ1 - wprowadzenie</a>
+                        <a class="btn btn-dark" type="button" href="/20_marcinek/licencjat/">QUIZ2 - funkcje i narzędzia</a>
+			        </div>
+            </div>
 		</main>
-		<footer class="wrapper">
-		</footer>
-	</body>
-</html>
+{% endblock %}

@@ -1,65 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kurs</title>
-    <link
-			rel="stylesheet"
-			href=" {{ url_for('static', filename='style.css') }}"
-    />
-        <script
-			src="https://kit.fontawesome.com/044e03b4b1.js"
-			crossorigin="anonymous"></script>
-</head>
-<body>
-		<header class="wrapper">
-			<p>cacti<span class="header-text">design</span></p>
-		</header>
-		<nav class="wrapper">
-			<div class="left-nav">
-				<a class="nav-link" href="/20_marcinek/licencjat/mainPage"
-					><i class="fa-solid fa-house"></i
-				></a>
-				<a class="nav-link" href="/20_marcinek/licencjat/course">nauka</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/quizy">quiz</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/progress">postępy</a>
-			</div>
-			<div class="right-nav">
+{% extends 'base.html' %}
+{% block title %}Logowanie{% endblock %}
+{% block content %}
+		<main>
+			<div class="row align-items-center text-center">
+                <div class="mx-auto col-10 col-md-8 col-lg-4">
+                    <h2 class="fw-bold pb-3">Logowanie</h2>
+                    <form method="POST">
+                        <div class="form-group mb-3 fs-4">
+                          <label class="pb-2" for="email">Email Address</label>
+                          <input
+                            type="email"
+                            class="form-control text-center"
+                            id="email"
+                            name="email"
+                            placeholder="example@email.com"
+                          />
+                        </div>
+                        <div class="form-group mb-3 fs-4">
+                          <label class="pb-2" for="password">Password</label>
+                          <input
+                            type="password"
+                            class="form-control text-center"
+                            id="password"
+                            name="password"
+                            placeholder="Wprowadź hasło"
+                          />
 
-			</div>
-		</nav>
-		<main class="wrapper">
-			<div class="container-top">
-                <h2>Logowanie</h2>
-				<form method="POST">
-					<div class="form-group">
-					  <label for="email">Email Address</label>
-					  <input
-						type="email"
-						class="form-control"
-						id="email"
-						name="email"
-						placeholder="Enter email"
-					  />
-					</div>
-					<div class="form-group">
-					  <label for="password">Password</label>
-					  <input
-						type="password"
-						class="form-control"
-						id="password"
-						name="password"
-						placeholder="Enter password"
-					  />
-					</div>
-					<br />
-					<button type="submit" class="btn btn-primary">Login</button>
-				  </form>
-			</div>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button type="submit" class="btn btn-dark">Login</button>
+                            </div>
+                      </form>
+                </div>
+            </div>
 		</main>
-		<footer class="wrapper">
-		</footer>
-	</body>
-</html>
+{% endblock %}

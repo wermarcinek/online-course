@@ -1,62 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kurs</title>
-    <link
-			rel="stylesheet"
-			href=" {{ url_for('static', filename='style.css') }}"
-    />
-        <script
-			src="https://kit.fontawesome.com/044e03b4b1.js"
-			crossorigin="anonymous"></script>
-</head>
-<body>
-		<header class="wrapper">
-			<p>cacti<span class="header-text">design</span></p>
-		</header>
-		<nav class="wrapper">
-			<div class="left-nav">
-				<a class="nav-link" href="/20_marcinek/licencjat/mainPage"
-					><i class="fa-solid fa-house"></i
-				></a>
-				<a class="nav-link" href="/20_marcinek/licencjat/course">nauka</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/quizy">quiz</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/progress">postępy</a>
+{% extends 'base.html' %}
+{% block title %}Postępy{% endblock %}
+{% block content %}
+		<main>
+			<div class="text-center">
+                <h2 class="fw-bold pb-3">POSTĘPY</h2>
 			</div>
-			<div class="right-nav">
-				<a class="nav-link" href="/20_marcinek/licencjat/login">log in</a>
-				<a class="nav-link" href="/20_marcinek/licencjat/signup">sign up</a>
-			</div>
-		</nav>
-		<main class="wrapper">
-			<div class="container-top">
-                <h2>POSTĘPY</h2>
-			</div>
-            <table style="border-collapse: collapse; width: 300px;">
+
+            <p>Najlepsze wyniki</p>
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                    <td style="border: 1px solid black; padding: 10px;">QUIZ1 - wprowadzenie</td>
-                    <td style="border: 1px solid black; padding: 10px;">{{tt1}}</td>
+                    <th scope="col">Nazwa quizu</th>
+                    <th scope="col">Zdobyte punkty</th>
                 </tr>
-                <tr>
-                    <td style="border: 1px solid black; padding: 10px;">QUIZ2 - parametry techniczne stron</td>
-                    <td style="border: 1px solid black; padding: 10px;">{{tt2}}</td>
-                </tr>
-</table><br>
+                    <tr>
+                        <td>QUIZ1 - wprowadzenie</td>
+                        <td>{{tt1}}</td>
+                    </tr>
+                    <tr>
+                        <td>QUIZ2 - parametry techniczne stron</td>
+                        <td>{{tt2}}</td>
+                    </tr>
+            </table>
+
+
+            <p>Historia rozgrywek</p>
+        <div class="table-responsive">
             {% for points in user.points|reverse %}
                         {% if loop.index <= 10 %}
-                <table style="border-collapse: collapse; width: 300px;">
-                <tr>
-                    <td style="border: 1px solid black; padding: 10px;">{{ points.data }}</td>
-                    <td style="border: 1px solid black; padding: 10px;">{{ points.points}}</td>
-                </tr>
-            </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td class="text-start px-5">{{ points.data }}</td>
+                            <td class="text-end px-5">{{ points.points}}</td>
+                        </tr>
+                </table>
                 {%  endif %}
             {% endfor %}
+        </div>
 		</main>
-		<footer class="wrapper">
-		</footer>
-	</body>
-</html>
+{% endblock %}

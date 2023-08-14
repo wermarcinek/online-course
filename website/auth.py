@@ -15,11 +15,11 @@ def index():  # put application's code here
 
 @auth.route('/projektowanie')
 def projektowanie():
-    return render_template('projektowanie.html')
+    return render_template('projektowanie.html', user=current_user)
 
 @auth.route('/grafika')
 def grafika():
-    return render_template('grafika.html')
+    return render_template('grafika.html', user=current_user)
 
 @auth.route('/progress')
 @login_required
@@ -45,19 +45,23 @@ def progress():
 
 @auth.route('/course')
 def course():
-    return render_template('course.html')
+    return render_template('course.html', user=current_user)
+
+@auth.route('/forum')
+def forum():
+    return render_template('forum.html', user=current_user)
 
 @auth.route('/quizFig')
 def quizFig():
-    return render_template('quizFig.html')
+    return render_template('quizFig.html', user=current_user)
 
 @auth.route('/quizProj')
 def quizProj():
-    return render_template('quizProj.html')
+    return render_template('quizProj.html', user=current_user )
 
 @auth.route('/quizy')
 def quiz():
-    return render_template('quiz.html')
+    return render_template('quiz.html', user=current_user)
 
 
 @auth.route('/test1', methods=['GET', 'POST'])
@@ -91,7 +95,7 @@ def test1():
 
     if 'question_index' in session:
         current_question = DANE1[session['question_index']]
-        return render_template('test1.html', pytanie=current_question)
+        return render_template('test1.html', pytanie=current_question, user=current_user)
 
     return redirect(url_for('/wynik'))
 
@@ -126,13 +130,13 @@ def test2():
 
     if 'question_index' in session:
         current_question = DANE2[session['question_index']]
-        return render_template('test2.html', pytanie=current_question)
+        return render_template('test2.html', pytanie=current_question, user=current_user)
 
     return redirect(url_for('/wynik'))
 
 @auth.route('/wynik')
 def wynik():
-    return render_template('wynik.html')
+    return render_template('wynik.html', user=current_user)
 
 
 ###########################
