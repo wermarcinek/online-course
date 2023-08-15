@@ -1,25 +1,76 @@
 {% extends 'base.html' %}
 {% block title %}Forum{% endblock %}
 {% block content %}
-    <div class="container">
+<div class="row align-items-center">
+   <div class="mx-auto col-10 col-md-8 col-lg-6">
+            <h2 class="text-center">Forum</h2>
+            <hr>
+                <div>
+                    {% if user.is_authenticated %}
+                  <form method="POST">
+                     <textarea name="note" id="note" class="form-control"></textarea>
+                     <div class="row align-items-center px-3">
+                        <button type="submit" class="btn btn-dark mt-3 mb-3">Add Note</button>
+                     </div>
+                  </form>
+                    {% endif %}
+                </div>
+              {% for note in notes|reverse %}
 
-    <ul class="list-group list-group-flush" id="notes">
-      {% for note in notes %}
-           <p>
+                  <ul class="list-group pb-2">
+                   {% if note.user_id == user.first_name %}
+                  <li class="list-group-item list-group-item-secondary fs-5">
+                  {% else %}
 
-      </p>
-      <li>
-       User ID: {{ note.user_id }} - Note: {{ note.data }}
-      </li>
-      {% endfor %}
-    </ul>
-    <form method="POST">
-      <textarea name="note" id="note" class="form-control"></textarea>
-      <br />
-      <div align="center">
-        <button type="submit" class="btn btn-primary">Add Note</button>
-      </div>
-    </form></div>
-</form>
+          <li class="list-group-item fs-5"> {% endif %}
+                      {{ note.user_id }}
+              {% if note.user_id == user.first_name or current_user.first_name == 'admin' %}
+                 <div class="float-end">
+    <button
+        type="button"
+        class="btn btn-sm btn-light"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteModal-{{ note.id }}">
+        USUŃ
+    </button>
+    <div
+        class="modal fade"
+        id="deleteModal-{{ note.id }}"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>
+                        Czy na pewno chcesz usunąć?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Nie
+                    </button>
+                    <div>
+                        <form action="{{ url_for('auth.delete_note', note_id=note.id) }}" method="post">
+                            <button type="submit" class="btn btn-dark">Tak</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                        {% endif %}
+          </li>
+                      <li class="list-group-item">{{ note.data }}</li>
 
+          </ul>
+                 {% endfor %}
+    </div>
+</div>
 {% endblock %}

@@ -8,18 +8,37 @@ from .questions import *
 
 auth = Blueprint('auth', __name__)
 
+# ścieżka do strony głównej na serwerze limba.wzks.uj.edu.pl
 
 @auth.route('/')
 def index():  # put application's code here
     return redirect('/20_marcinek/licencjat/mainPage')
 
+# ścieżka do strony głównej
+
+@auth.route('/mainPage')
+def mainPage():
+    return render_template("mainPage.html", user=current_user)
+
+# ścieżka do strony z nauką
+
+@auth.route('/course')
+def course():
+    return render_template('course.html', user=current_user)
+
+# ścieżka do podstrony z materiałami do nauki z projektowania stron
+
 @auth.route('/projektowanie')
 def projektowanie():
     return render_template('projektowanie.html', user=current_user)
 
+# ścieżka do podstrony z materiałami do nauki z programów graficznych
+
 @auth.route('/grafika')
 def grafika():
     return render_template('grafika.html', user=current_user)
+
+# śledzenie postępów
 
 @auth.route('/progress')
 @login_required
@@ -58,9 +77,10 @@ def progress():
         Rank.query.filter_by(name=CU_name).update({Rank.rank_points: suma})
         db.session.commit()
 
-    ####################
+
     return render_template('progress.html',tt1=tt1,tt2=tt2, user=current_user)
 
+# ranking
 
 @auth.route('/rank')
 def rank():
@@ -92,6 +112,7 @@ def rank():
                            rank5=rank5, rank6=rank6, rank7=rank7, rank8=rank8, rank9=rank9, rank10=rank10,
                            user=current_user, rank_plaec_CU=rank_plaec_CU)
 
+# odświeżanie rankingu
 
 @auth.route('/refresh_rank')
 def refresh_rank():
@@ -110,7 +131,8 @@ def refresh_rank():
     else:
         tt2 = tt2.points
 
-        #### USUWANIE STRINGÓW Z WYNIKÓW ZEBY MÓC ZSUMOWAĆ
+ # USUWANIE STRINGÓW Z WYNIKÓW ZEBY MÓC ZSUMOWAĆ
+
     lista_braku_udzialu_INT = []
     lista_braku_udzialu = [tt1, tt2]
     for i in range(len(lista_braku_udzialu)):
@@ -131,10 +153,7 @@ def refresh_rank():
 
     return redirect(url_for('auth.rank'))
 
-@auth.route('/course')
-def course():
-    return render_template('course.html', user=current_user)
-
+# forum z postami użytkowników
 
 @auth.route('/forum', methods=['GET', 'POST'])
 def forum():
@@ -155,18 +174,41 @@ def forum():
 
     return render_template('forum.html', user=current_user, notes=all_notes)
 
-@auth.route('/quizFig')
-def quizFig():
-    return render_template('quizFig.html', user=current_user)
+# usuwanie wpisów z forum
 
-@auth.route('/quizProj')
-def quizProj():
-    return render_template('quizProj.html', user=current_user )
+@auth.route('/delete_note/<int:note_id>', methods=['GET', 'POST'])
+def delete_note(note_id):
+    note = Note.query.get_or_404(note_id)
+
+    # Check if the current user is the owner of the note
+    if note.user_id == current_user.first_name or current_user.first_name == 'admin':
+        db.session.delete(note)
+        db.session.commit()
+        flash('Note deleted!', category='success')
+    else:
+        flash('You are not authorized to delete this note.', category='error')
+
+    return redirect(url_for('auth.forum'))
+
+# ścieżka do strony z quizami
 
 @auth.route('/quizy')
 def quiz():
     return render_template('quiz.html', user=current_user)
 
+# podstrona dla quizów z pogramów graficznych
+
+@auth.route('/quizFig')
+def quizFig():
+    return render_template('quizFig.html', user=current_user)
+
+# podstrona z quizami do projektowania
+
+@auth.route('/quizProj')
+def quizProj():
+    return render_template('quizProj.html', user=current_user )
+
+# quiz1
 
 @auth.route('/test1', methods=['GET', 'POST'])
 def test1():
@@ -202,6 +244,8 @@ def test1():
         return render_template('test1.html', pytanie=current_question, user=current_user)
 
     return redirect(url_for('/wynik'))
+
+# quiz2
 
 @auth.route('/test2', methods=['GET', 'POST'])
 def test2():
@@ -243,27 +287,50 @@ def wynik():
     return render_template('wynik.html', user=current_user)
 
 
-###########################
+# panel administratora
 
 @auth.route('/adminpanel')
+@login_required
 def adminpanel():
-    return render_template('adminpanel.html', user=current_user)
+    if current_user.first_name != 'admin':
+        return redirect(url_for('auth.mainPage'))
+
+    all_users = User.query.all()
+    return render_template('adminpanel.html', user=current_user, users=all_users)
+
+# zarządzanie użytkownikami
+
+@auth.route('/delete_user/<int:user_id>', methods=['GET', 'POST'])
+@login_required
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+
+    Rank.query.filter_by(name=user.first_name).delete()
+    Note.query.filter_by(user_id=user.first_name).delete()
+    Points.query.filter_by(user_id=user.id).delete()
+
+    # Delete the user
+    db.session.delete(user)
+    db.session.commit()
+    flash('User account and associated data deleted successfully.', category='success')
+
+    return redirect(url_for('auth.adminpanel'))
 
 
-@auth.route('/mainPage')
-def mainPage():
-    return render_template("mainPage.html", user=current_user)
+# formualrz kontaktowy
 
 @auth.route('/contact')
 def contact():
 
     return render_template("contact.html", user=current_user)
 
+
 @auth.before_request
 def restrict_access_to_auth_routes():
     if current_user.is_authenticated and request.endpoint in ['auth.login', 'auth.sign_up']:
         return redirect(url_for('auth.mainPage'))
 
+# logowanie użytkownika
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -284,6 +351,7 @@ def login():
 
     return render_template('login.html', user=current_user)
 
+# wylogowanie użytkownika
 
 @auth.route('/logout')
 @login_required
@@ -291,6 +359,7 @@ def logout():
     logout_user()
     return redirect(url_for('auth.login'))
 
+# rejestracja użytkownika
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def sign_up():
@@ -323,6 +392,9 @@ def sign_up():
             return redirect(url_for('auth.login'))
 
     return render_template("signup.html", user=current_user)
+
+# zmiana hasła użytkownika
+
 
 @auth.route('/changepassword', methods=['GET', 'POST'])
 @login_required
