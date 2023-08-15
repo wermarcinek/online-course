@@ -99,15 +99,19 @@ def rank():
     rank8 = rankall[7]
     rank9 = rankall[8]
     rank10 = rankall[9]
-    check_your_rank = Rank.query.order_by(Rank.rank_points.desc()).all()
-    rank_plaec_CU = 1
-    for i in range(len(check_your_rank)):
-        if check_your_rank[i].name == current_user.first_name:
-            break
-        else:
-            rank_plaec_CU += 1
+    if current_user.is_authenticated:
+        check_your_rank = Rank.query.order_by(Rank.rank_points.desc()).all()
+        rank_plaec_CU = 1
+        for i in range(len(check_your_rank)):
+            if check_your_rank[i].name == current_user.first_name:
+                break
+            else:
+                rank_plaec_CU += 1
 
-    your_rank = Rank.query.filter_by(name=current_user.first_name).first()
+        your_rank = Rank.query.filter_by(name=current_user.first_name).first()
+    else:
+        your_rank = ''
+        rank_plaec_CU = ''
     return render_template('rank.html', rank1=rank1, rank2=rank2, your_rank=your_rank, rank3=rank3, rank4=rank4,
                            rank5=rank5, rank6=rank6, rank7=rank7, rank8=rank8, rank9=rank9, rank10=rank10,
                            user=current_user, rank_plaec_CU=rank_plaec_CU)
@@ -161,13 +165,13 @@ def forum():
     if request.method == 'POST':
         note = request.form.get('note')  # Gets the note from the HTML
 
-        if len(note) < 1:
-            flash('Note is too short!', category='error')
+        if len(note) < 3:
+            flash('Wpis jest zbyt krótki!', category='error')
         else:
             new_note = Note(data=note, user_id=current_user.first_name)  # providing the schema for the note
             db.session.add(new_note)  # adding the note to the database
             db.session.commit()
-            flash('Note added!', category='success')
+            flash('Dodano wpis!', category='success')
 
 
     all_notes = Note.query.all()
@@ -184,9 +188,9 @@ def delete_note(note_id):
     if note.user_id == current_user.first_name or current_user.first_name == 'admin':
         db.session.delete(note)
         db.session.commit()
-        flash('Note deleted!', category='success')
+        flash('Usunięto wpis!', category='success')
     else:
-        flash('You are not authorized to delete this note.', category='error')
+        flash('Nie masz uprawnień żeby usunąć ten wpis.', category='error')
 
     return redirect(url_for('auth.forum'))
 
@@ -236,7 +240,7 @@ def test1():
                 db.session.add(new_points)
                 db.session.commit()
 
-            flash('Liczba poprawnych odpowiedzi, to: {0}'.format(points))
+            flash('Liczba poprawnych odpowiedzi, to: {0}'.format(points), category='success')
             return redirect(url_for('auth.wynik'))
 
     if 'question_index' in session:
@@ -312,8 +316,8 @@ def delete_user(user_id):
     # Delete the user
     db.session.delete(user)
     db.session.commit()
-    flash('User account and associated data deleted successfully.', category='success')
-
+    flash('Poprawnie usunięto użytkownika powiązane z nim dane.', category='success')
+    flash('Akcja zakończona niepowodzeniem.', category='error')
     return redirect(url_for('auth.adminpanel'))
 
 
@@ -323,6 +327,11 @@ def delete_user(user_id):
 def contact():
 
     return render_template("contact.html", user=current_user)
+
+@auth.route('/contact_refresh', methods=['GET'])
+def contact_refresh():
+    flash('Wiadomość wysłana.', category='success')
+    return redirect(url_for('auth.contact'))
 
 
 @auth.before_request
@@ -341,13 +350,13 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Logged in successfully!', category='success')
+                flash('Zalogowano!', category='success')
                 login_user(user, remember=True)
                 return redirect('mainPage')
             else:
-                flash('Incorrect password, try again.', category='error')
+                flash('Niepoprawne hasło.', category='error')
         else:
-            flash('Email does not exist.', category='error')
+            flash('Podany email nie istnieje.', category='error')
 
     return render_template('login.html', user=current_user)
 
@@ -357,6 +366,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash('Wylogowano.', category='success')
     return redirect(url_for('auth.login'))
 
 # rejestracja użytkownika
@@ -372,23 +382,23 @@ def sign_up():
         user = User.query.filter_by(email=email).first()
         name=User.query.filter_by(first_name=first_name).first()
         if user:
-            flash('Email already exists.', category='error')
+            flash('Podany email już istnieje. Podaj inny.', category='error')
         elif name:
-            flash('Name already exist.', category='error')
+            flash('Podany login już istnieje. Podaj inny.', category='error')
         elif len(email) < 4:
-            flash('Email must be greater than 3 characters.', category='error')
+            flash('Email musi mieć przynajmniej 4 znaki.', category='error')
         elif len(first_name) < 2:
-            flash('First name must be greater than 1 character.', category='error')
+            flash('Login musi mieć przynajmniej 2 znaki.', category='error')
         elif password1 != password2:
-            flash('Passwords don\'t match.', category='error')
-        elif len(password1) < 7:
-            flash('Password must be at least 7 characters.', category='error')
+            flash('Podane hasła nie są identyczne.', category='error')
+        elif len(password1) < 8:
+            flash('Hasło musi mieć co najmniej 8 znaków.', category='error')
         else:
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(
                 password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
-            flash('Account created!', category='success')
+            flash('Utworzono konto!', category='success')
             return redirect(url_for('auth.login'))
 
     return render_template("signup.html", user=current_user)
@@ -405,15 +415,15 @@ def changepassword():
         new_password2 = request.form.get('new_password2')
 
         if not check_password_hash(current_user.password, old_password):
-            flash('Incorrect old password.', category='error')
+            flash('Niepoprawne hasło.', category='error')
         elif new_password1 != new_password2:
-            flash('New passwords don\'t match.', category='error')
+            flash('Podane hasła nie są identyczne.', category='error')
         elif len(new_password1) < 7:
-            flash('New password must be at least 7 characters.', category='error')
+            flash('Hasło musi mieć co najmniej 8 znaków.', category='error')
         else:
             current_user.password = generate_password_hash(new_password1, method='sha256')
             db.session.commit()
-            flash('Password changed successfully!', category='success')
+            flash('Hasło zostało zmienione!', category='success')
             return redirect(url_for('auth.mainPage'))
 
     return render_template("changepassword.html", user=current_user)

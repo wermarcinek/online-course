@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Forum{% endblock %}
+{% block title %}Kontakt{% endblock %}
 {% block content %}
     <main>
         <div class="row align-items-center text-center">
             <div class="mx-auto col-10 col-md-8 col-lg-4">
-                <h2 class="fw-bold pb-3"> Kontakt</h2>
+                <h2 class="text-center">KONTAKT</h2><hr>
                  <form action="https://formsubmit.co/wer.marcinek@gmail.com" method="POST">
                      <div class="form-group mb-3 fs-4">
                          <label class="pb-2" for="name">Imię</label>
@@ -20,7 +20,7 @@
                      <div class="form-floating">
                          <textarea class="form-control text-center" name="msg" id="msg" required placeholder="Treść wiadomości"></textarea>
                      </div>
-                     <input type="hidden" name="_next" value="https://limba.wzks.uj.edu.pl/20_marcinek/licencjat/mainPage">
+                     <input type="hidden" name="_next" value="https://limba.wzks.uj.edu.pl/20_marcinek/licencjat/contact_refresh">
                      <input type="hidden" name="_captcha" value="false">
                      <input type="text" name="_honey" style="display:none">
                      <div class="pt-3 d-grid gap-2 col-6 mx-auto">

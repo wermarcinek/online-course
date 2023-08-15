@@ -1,101 +1,108 @@
 {% extends 'base.html' %}
 {% block title %}Ranking{% endblock %}
 {% block content %}
+		<main>
+        <div class="row align-items-center">
+   <div class="mx-auto col-10 col-md-8 col-lg-6">
+			<div>
+				<h2 class="text-center">RANKING</h2><hr>
+			</div>
+            <div class="table-responsive">
+			<table class="table text-center">
+    <tr>
+        <th>RANK</th>
+        <th>NAME</th>
+        <th>POINTS</th>
+    </tr>
+    <tr class="rank1">
+        <td>1</td>
+        <td>{{rank1.name}}</td>
+        <td>{{rank1.rank_points}}</td>
+    </tr>
+    <tr class="rank2">
+        <td>2</td>
+        <td>{{rank2.name}}</td>
+        <td>{{rank2.rank_points}}</td>
+    </tr>
+    <tr class="rank3">
+        <td>3</td>
+        <td>{{rank3.name}}</td>
+        <td>{{rank3.rank_points}}</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>{{rank4.name}}</td>
+        <td>{{rank4.rank_points}}</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>{{rank5.name}}</td>
+        <td>{{rank5.rank_points}}</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>{{rank6.name}}</td>
+        <td>{{rank6.rank_points}}</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>{{rank7.name}}</td>
+        <td>{{rank7.rank_points}}</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>{{rank8.name}}</td>
+        <td>{{rank8.rank_points}}</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>{{rank9.name}}</td>
+        <td>{{rank9.rank_points}}</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>{{rank10.name}}</td>
+        <td>{{rank10.rank_points}}</td>
+    </tr>
+</table>
+            </div>
+			<h2 class="text-center pt-3">Twoje miejsce w rankingu</h2>
 
-			<table style="border-collapse: collapse; width: 60%; margin: 0 auto">
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">RANK</th>
-					<th style="border: 1px solid black; padding: 5px">NAME</th>
-					<th style="border: 1px solid black; padding: 5px">POINTS</th>
+        <div class="table-responsive">
+			<div>
+            {% if user.is_authenticated %}
+            <table class="table text-center">
+				<tr>
+					<th>RANK</th>
+					<th>NAME</th>
+					<th>POINTS</th>
 				</tr>
-
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">1</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank1.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank1.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">2</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank2.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank2.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">3</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank3.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank3.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">4</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank4.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank4.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">5</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank5.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank5.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">6</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank6.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank6.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">7</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank7.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank7.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">8</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank8.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank8.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">9</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank9.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank9.rank_points}}
-					</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">10</th>
-					<th style="border: 1px solid black; padding: 5px">{{rank10.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
-						{{rank10.rank_points}}
-					</th>
-				</tr>
-			</table><br>
-			<h2 style="text-align: center;">Twoje miejsce w rankingu</h2>
-			<br>
-
-			<table style="border-collapse: collapse; width: 60%; margin: 0 auto">
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">RANK</th>
-					<th style="border: 1px solid black; padding: 5px">NAME</th>
-					<th style="border: 1px solid black; padding: 5px">POINTS</th>
-				</tr>
-				<tr style="border: 1px solid black">
-					<th style="border: 1px solid black; padding: 5px">{{rank_plaec_CU}}</th>
-					<th style="border: 1px solid black; padding: 5px">{{your_rank.name}}</th>
-					<th style="border: 1px solid black; padding: 5px">
+				{% if rank_plaec_CU==1 %}
+                    <tr class="table text-center rank1">
+                    {% elif rank_plaec_CU==2 %}
+                    <tr class="table text-center rank2">
+                    {% elif rank_plaec_CU==3 %}
+                    <tr class="table text-center rank3">
+                    {%else%}
+                    <tr class="table text-center">
+                    {%endif%}
+					<td>{{rank_plaec_CU}}</td>
+					<td>{{your_rank.name}}</td>
+					<td>
 						{{your_rank.rank_points}}
-					</th>
+					</td>
 				</tr>
 			</table>
-			<a class="nav-link" href="/20_marcinek/licencjat/refresh_rank">Refresh Rank</a>
+            {% else %}
+                <p class="text-center"> <a href="/20_marcinek/licencjat/login">Zaloguj się</a> i weź udział w quizie żeby zobaczyć siebie w rankingu :)</p>
+            {% endif %}
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+			<a class="btn btn-dark" href="/20_marcinek/licencjat/refresh_rank">Refresh Rank</a>
+            </div>
+
+            </div>
+        </div>
+        </div>
+        </main>
 {% endblock %}

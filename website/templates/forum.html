@@ -3,14 +3,14 @@
 {% block content %}
 <div class="row align-items-center">
    <div class="mx-auto col-10 col-md-8 col-lg-6">
-            <h2 class="text-center">Forum</h2>
+            <h2 class="text-center">FORUM</h2>
             <hr>
                 <div>
                     {% if user.is_authenticated %}
                   <form method="POST">
                      <textarea name="note" id="note" class="form-control"></textarea>
                      <div class="row align-items-center px-3">
-                        <button type="submit" class="btn btn-dark mt-3 mb-3">Add Note</button>
+                        <button type="submit" class="btn btn-dark mt-3 mb-3">Dodaj wpis</button>
                      </div>
                   </form>
                     {% endif %}
