@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
 {% block title %}Forum{% endblock %}
 {% block content %}
-    <main>
-        <div class="text-center">
-                <h2 class="fw-bold pb-3"> Forum</h2>
-			</div>
-    </main>
+    <div class="container">
+
+    <ul class="list-group list-group-flush" id="notes">
+      {% for note in notes %}
+           <p>
+
+      </p>
+      <li>
+       User ID: {{ note.user_id }} - Note: {{ note.data }}
+      </li>
+      {% endfor %}
+    </ul>
+    <form method="POST">
+      <textarea name="note" id="note" class="form-control"></textarea>
+      <br />
+      <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+      </div>
+    </form></div>
+</form>
+
 {% endblock %}
