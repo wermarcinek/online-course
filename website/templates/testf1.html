@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Quiz{% endblock %}
+{% block content %}
+		<main>
+                 <div class="mx-auto col-10 col-md-8 col-lg-6 fs-4">
+                     <div class="text-center"><h2>QUIZ1 - Figma wprowadzenie</h2><hr></div>
+
+				<form method="POST" action="{{ url_for('auth.testf1') }}">
+        <p>{{ pytanie['pytanie'] }}</p>
+                    {% for odpowiedz in pytanie['odpowiedzi'] %}
+            <input type="radio" name="odpowiedz" value="{{ odpowiedz }}"
+                   {% if 'answers' in session and session['answers'].get(loop.index0) == odpowiedz %}checked{% endif %}>
+            {{ odpowiedz }}<br>
+        {% endfor %}
+                    <div class="d-flex justify-content-center">
+                        <input class="mt-3 btn btn-dark btn-lg" type="submit" value="Next">
+                    </div>
+                </form>
+
+			</div>
+		</main>
+{% endblock %}

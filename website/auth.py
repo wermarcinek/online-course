@@ -45,20 +45,38 @@ def grafika():
 def progress():
     CU_name=current_user.first_name
     x=None
-    tt1=Points.query.filter_by(data='QUIZ1 - wprowadzenie').join(User).filter_by(first_name=CU_name).order_by(Points.points.desc()).first()
-    if (tt1==x):
-        tt1='Nie brałeś udziału'
-    else:
-        tt1=tt1.points
+    tt1=Points.query.filter_by(data='QUIZ1 - wprowadzenie').join(User).filter_by(first_name=CU_name).order_by(Points.points.desc()).first() ###tutaj skopiować
+    if (tt1==x):###
+        tt1='Nie brałeś udziału'###
+    else:###
+        tt1=tt1.points###
     tt2=Points.query.filter_by(data='QUIZ2 - parametry techniczne stron').join(User).filter_by(first_name=CU_name).order_by(Points.points.desc()).first()
     if (tt2==x):
         tt2='Nie brałeś udziału'
     else:
         tt2=tt2.points
+    tt3 = Points.query.filter_by(data='QUIZ1 - Figma wprowadzenie').join(User).filter_by(
+        first_name=CU_name).order_by(Points.points.desc()).first()
+    if (tt3 == x):
+        tt3 = 'Nie brałeś udziału'
+    else:
+        tt3 = tt3.points
+    tt4 = Points.query.filter_by(data='QUIZ2 - Figma funkcje i narzędzia').join(User).filter_by(
+        first_name=CU_name).order_by(Points.points.desc()).first()
+    if (tt4 == x):
+        tt4 = 'Nie brałeś udziału'
+    else:
+        tt4 = tt4.points
+    tt5 = Points.query.filter_by(data='QUIZ3 - Figma skróty klawiaturowe').join(User).filter_by(
+        first_name=CU_name).order_by(Points.points.desc()).first()
+    if (tt5 == x):
+        tt5 = 'Nie brałeś udziału'
+    else:
+        tt5 = tt5.points
 
     #### USUWANIE STRINGÓW Z WYNIKÓW ZEBY MÓC ZSUMOWAĆ
     lista_braku_udzialu_INT=[]
-    lista_braku_udzialu=[tt1,tt2]
+    lista_braku_udzialu=[tt1,tt2,tt3,tt4,tt5] ###tutaj zmienić
     for i in range(len(lista_braku_udzialu)):
         if lista_braku_udzialu[i] == 'Nie brałeś udziału':
             lista_braku_udzialu[i] = 0
@@ -78,7 +96,7 @@ def progress():
         db.session.commit()
 
 
-    return render_template('progress.html',tt1=tt1,tt2=tt2, user=current_user)
+    return render_template('progress.html',tt1=tt1,tt2=tt2,tt3=tt3,tt4=tt4,tt5=tt5, user=current_user)###tutaj pododawać
 
 # ranking
 
@@ -119,26 +137,43 @@ def rank():
 # odświeżanie rankingu
 
 @auth.route('/refresh_rank')
+@login_required
 def refresh_rank():
     CU_name = current_user.first_name
     x = None
-    tt1 = Points.query.filter_by(data='QUIZ1 - wprowadzenie').join(User).filter_by(first_name=CU_name).order_by(
-        Points.points.desc()).first()
-    if (tt1 == x):
-        tt1 = 'Nie brałeś udziału'
-    else:
-        tt1 = tt1.points
-    tt2 = Points.query.filter_by(data='QUIZ2 - parametry techniczne stron').join(User).filter_by(first_name=CU_name).order_by(
-        Points.points.desc()).first()
+    tt1 = Points.query.filter_by(data='QUIZ1 - wprowadzenie').join(User).filter_by(first_name=CU_name).order_by(Points.points.desc()).first()###tu
+    if (tt1 == x):###
+        tt1 = 'Nie brałeś udziału'###
+    else:###
+        tt1 = tt1.points###tu
+    tt2 = Points.query.filter_by(data='QUIZ2 - parametry techniczne stron').join(User).filter_by(first_name=CU_name).order_by(Points.points.desc()).first()
     if (tt2 == x):
         tt2 = 'Nie brałeś udziału'
     else:
         tt2 = tt2.points
+    tt3 = Points.query.filter_by(data='QUIZ1 - Figma wprowadzenie').join(User).filter_by(
+        first_name=CU_name).order_by(Points.points.desc()).first()
+    if (tt3 == x):
+        tt3 = 'Nie brałeś udziału'
+    else:
+        tt3 = tt3.points
+    tt4 = Points.query.filter_by(data='QUIZ2 - Figma funkcje i narzędzia').join(User).filter_by(
+        first_name=CU_name).order_by(Points.points.desc()).first()
+    if (tt4 == x):
+        tt4 = 'Nie brałeś udziału'
+    else:
+        tt4 = tt4.points
+    tt5 = Points.query.filter_by(data='QUIZ3 - Figma skróty klawiaturowe').join(User).filter_by(
+        first_name=CU_name).order_by(Points.points.desc()).first()
+    if (tt5 == x):
+        tt5 = 'Nie brałeś udziału'
+    else:
+        tt5 = tt5.points
 
  # USUWANIE STRINGÓW Z WYNIKÓW ZEBY MÓC ZSUMOWAĆ
 
     lista_braku_udzialu_INT = []
-    lista_braku_udzialu = [tt1, tt2]
+    lista_braku_udzialu = [tt1, tt2, tt3, tt4, tt5]###tutaj
     for i in range(len(lista_braku_udzialu)):
         if lista_braku_udzialu[i] == 'Nie brałeś udziału':
             lista_braku_udzialu[i] = 0
@@ -181,6 +216,7 @@ def forum():
 # usuwanie wpisów z forum
 
 @auth.route('/delete_note/<int:note_id>', methods=['GET', 'POST'])
+@login_required
 def delete_note(note_id):
     note = Note.query.get_or_404(note_id)
 
@@ -241,13 +277,12 @@ def test1():
                 db.session.commit()
 
             flash('Liczba poprawnych odpowiedzi, to: {0}'.format(points), category='success')
-            return redirect(url_for('auth.wynik'))
+            return redirect(url_for('auth.progress'))
 
     if 'question_index' in session:
         current_question = DANE1[session['question_index']]
         return render_template('test1.html', pytanie=current_question, user=current_user)
 
-    return redirect(url_for('/wynik'))
 
 # quiz2
 
@@ -278,18 +313,112 @@ def test2():
                 db.session.commit()
 
             flash('Liczba poprawnych odpowiedzi, to: {0}'.format(points))
-            return redirect(url_for('auth.wynik'))
+            return redirect(url_for('auth.progress'))
 
     if 'question_index' in session:
         current_question = DANE2[session['question_index']]
         return render_template('test2.html', pytanie=current_question, user=current_user)
 
-    return redirect(url_for('/wynik'))
 
-@auth.route('/wynik')
-def wynik():
-    return render_template('wynik.html', user=current_user)
+@auth.route('/testf1', methods=['GET', 'POST'])
+def testf1():
+    nazwa='QUIZ1 - Figma wprowadzenie'
+    if 'question_index' not in session:
+        session['question_index'] = 0
+        session['points'] = 0
 
+    if request.method == 'POST':
+        odpowiedzi = request.form
+        current_question = DANEF1[session['question_index']]
+
+        if odpowiedzi.get('odpowiedz') == current_question['odpok']:
+            session['points'] += 1
+
+        session['question_index'] += 1
+
+        if session['question_index'] >= len(DANEF1):
+            points = session['points']
+            session.pop('question_index')
+            session.pop('points')
+
+            if current_user.is_authenticated:
+                new_points = Points(user_id=current_user.id, points=points, data=nazwa)  # Provide the user_id
+                db.session.add(new_points)
+                db.session.commit()
+
+            flash('Liczba poprawnych odpowiedzi, to: {0}'.format(points), category='success')
+            return redirect(url_for('auth.progress'))
+
+    if 'question_index' in session:
+        current_question = DANEF1[session['question_index']]
+        return render_template('testf1.html', pytanie=current_question, user=current_user)
+
+
+@auth.route('/testf2', methods=['GET', 'POST'])
+def testf2():
+    nazwa='QUIZ2 - Figma funkcje i narzędzia'
+    if 'question_index' not in session:
+        session['question_index'] = 0
+        session['points'] = 0
+
+    if request.method == 'POST':
+        odpowiedzi = request.form
+        current_question = DANEF2[session['question_index']]
+
+        if odpowiedzi.get('odpowiedz') == current_question['odpok']:
+            session['points'] += 1
+
+        session['question_index'] += 1
+
+        if session['question_index'] >= len(DANEF2):
+            points = session['points']
+            session.pop('question_index')
+            session.pop('points')
+
+            if current_user.is_authenticated:
+                new_points = Points(user_id=current_user.id, points=points, data=nazwa)  # Provide the user_id
+                db.session.add(new_points)
+                db.session.commit()
+
+            flash('Liczba poprawnych odpowiedzi, to: {0}'.format(points), category='success')
+            return redirect(url_for('auth.progress'))
+
+    if 'question_index' in session:
+        current_question = DANEF2[session['question_index']]
+        return render_template('testf2.html', pytanie=current_question, user=current_user)
+
+@auth.route('/testf3', methods=['GET', 'POST'])
+def testf3():
+    nazwa='QUIZ3 - Figma skróty klawiaturowe'
+    if 'question_index' not in session:
+        session['question_index'] = 0
+        session['points'] = 0
+
+    if request.method == 'POST':
+        odpowiedzi = request.form
+        current_question = DANEF3[session['question_index']]
+
+        if odpowiedzi.get('odpowiedz') == current_question['odpok']:
+            session['points'] += 1
+
+        session['question_index'] += 1
+
+        if session['question_index'] >= len(DANEF3):
+            points = session['points']
+            session.pop('question_index')
+            session.pop('points')
+
+            if current_user.is_authenticated:
+                new_points = Points(user_id=current_user.id, points=points, data=nazwa)  # Provide the user_id
+                db.session.add(new_points)
+                db.session.commit()
+
+            flash('Liczba poprawnych odpowiedzi, to: {0}'.format(points), category='success')
+            return redirect(url_for('auth.progress'))
+
+    if 'question_index' in session:
+        current_question = DANEF3[session['question_index']]
+        return render_template('testf3.html', pytanie=current_question, user=current_user)
 
 # panel administratora
 
@@ -324,11 +453,13 @@ def delete_user(user_id):
 # formualrz kontaktowy
 
 @auth.route('/contact')
+@login_required
 def contact():
 
     return render_template("contact.html", user=current_user)
 
 @auth.route('/contact_refresh', methods=['GET'])
+@login_required
 def contact_refresh():
     flash('Wiadomość wysłana.', category='success')
     return redirect(url_for('auth.contact'))

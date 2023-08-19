@@ -112,3 +112,161 @@ DANE2 = [{
         'odpowiedzi': ['Zawsze należy umieszczać jak najwięcej interaktywnych elementów dla lepszego zaangażowania użytkowników', 'Liczba elementów interaktywnych nie ma wpływu na doświadczenie użytkownika', 'Ilość elementów interaktywnych nie powinna przekraczać 10 na stronie', 'Liczba interaktywnych elementów powinna być dostosowana do celów strony, unikając przekroczenia granicy zatłoczenia'],
         'odpok': 'Liczba interaktywnych elementów powinna być dostosowana do celów strony, unikając przekroczenia granicy zatłoczenia'},
 ]
+
+DANEF1 = [
+{
+        'pytanie': 'Co to jest Figma?',
+        'odpowiedzi': ['Aplikacja do tworzenia muzyki', 'Narzędzie do projektowania interfejsów użytkownika', 'Platforma do tworzenia filmów animowanych', 'Narzędzie do edycji zdjęć'],
+        'odpok': 'Narzędzie do projektowania interfejsów użytkownika'},
+{
+        'pytanie': 'Jaka jest główna zaleta współpracy w Figma?',
+        'odpowiedzi': ['Możliwość tworzenia filmów animowanych', 'Synchronizacja projektu w czasie rzeczywistym', 'Tworzenie muzyki online', 'Automatyzacja procesu pisania kodu'],
+        'odpok': 'Synchronizacja projektu w czasie rzeczywistym'},
+{
+        'pytanie': 'Jakie projekty można tworzyć w Figma?',
+        'odpowiedzi': ['Tylko projekty związane z aplikacjami mobilnymi', 'Tylko projekty graficzne', 'Projekty związane z aplikacjami mobilnymi, stronami internetowymi', 'Tylko projekty animowane'],
+        'odpok': 'Projekty związane z aplikacjami mobilnymi, stronami internetowymi'},
+{
+        'pytanie': 'Co to są komponenty w Figma?',
+        'odpowiedzi': ['Różne narzędzia do rysowania i edycji', 'Gotowe projekty do wykorzystania', 'Ruchome elementy w interfejsie', 'Reużywalne elementy projektu, które można stosować wielokrotnie'],
+        'odpok': 'Reużywalne elementy projektu, które można stosować wielokrotnie'},
+{
+        'pytanie': 'Do czego służy tryb prezentacji w Figma?',
+        'odpowiedzi': ['Do tworzenia gotowych wersji projektów', 'Do przeglądania historii zmian projektu', 'Do prezentowania projektu w sposób zbliżony do użytkowania', 'Do generowania kodu źródłowego'],
+        'odpok': 'Do prezentowania projektu w sposób zbliżony do użytkowania'},
+{
+        'pytanie': 'Jaka jest główna zaleta tworzenia prototypów w Figma?',
+        'odpowiedzi': ['Umożliwia testowanie kodu źródłowego', 'Pozwala na tworzenie interakcji i animacji', 'Pozwala na tworzenie interakcji i animacji', 'Generuje gotowe style CSS'],
+        'odpok': 'Pozwala na tworzenie interakcji i animacji'},
+{
+        'pytanie': 'Jakie możliwości daje Figma w kontekście testowania projektów na różnych urządzeniach?',
+        'odpowiedzi': ['Umożliwia testowanie tylko na komputerach', 'Pozwala na testowanie tylko na urządzeniach mobilnych', 'Umożliwia łatwe przetestowanie projektów na różnych urządzeniach i rozdzielczościach', 'Oferuje możliwość testowania tylko na jednym konkretnym urządzeniu'],
+        'odpok': 'Umożliwia łatwe przetestowanie projektów na różnych urządzeniach i rozdzielczościach'},
+{
+        'pytanie': 'Jakie są korzyści wynikające z tworzenia prezentacji w trybie prezentacji w Figma?',
+        'odpowiedzi': ['Automatyczne generowanie raportów z testów użytkowników', 'Lepsze zrozumienie historii zmian projektu', 'Możliwość przekształcenia prezentacji w film animowany', 'Prezentacja projektu w sposób zbliżony do rzeczywistego użytkowania'],
+        'odpok': ''},
+{
+        'pytanie': 'Co oznacza "współpraca w czasie rzeczywistym" w kontekście Figma?',
+        'odpowiedzi': ['Możliwość korzystania z aplikacji offline', 'Synchronizacja projektów pomiędzy różnymi platformami', 'Praca nad projektem przez wiele osób jednocześnie, widoczna w czasie rzeczywistym', 'Automatyczne generowanie kodu HTML'],
+        'odpok': 'Praca nad projektem przez wiele osób jednocześnie, widoczna w czasie rzeczywistym'},
+{
+        'pytanie': 'W jaki sposób Figma pomaga utrzymać spójność wyglądu projektu?',
+        'odpowiedzi': ['Poprzez automatyczną generację kodu źródłowego', 'Poprzez synchronizację projektów między różnymi narzędziami projektowymi', 'Poprzez tworzenie bibliotek z reużywalnymi komponentami i stylami', 'Poprzez automatyczną konwersję projektu na animację'],
+        'odpok': 'Poprzez tworzenie bibliotek z reużywalnymi komponentami i stylami'},
+{
+        'pytanie': 'Dla jakich projektów można wykorzystać narzędzie Figma?',
+        'odpowiedzi': ['Projekty związane z projektowaniem wnętrz', 'Projekty muzyczne oraz audiowizualne', 'Projekty związane z projektowaniem interfejsów, stronami internetowymi, aplikacjami mobilnymi', 'Projekty związane z projektowaniem ubrań'],
+        'odpok': 'Projekty związane z projektowaniem interfejsów, stronami internetowymi, aplikacjami mobilnymi'},
+]
+DANEF2 = [
+{
+        'pytanie': 'Jakie narzędzie w Figma pozwala na tworzenie interaktywnych prototypów?',
+        'odpowiedzi': ['Select (Zaznaczanie)', 'Move (Przesuwanie)', 'Prototype (Prototypowanie)', 'Pen (Pióro)'],
+        'odpok': 'Prototype (Prototypowanie)'},
+{
+        'pytanie': 'Co umożliwia narzędzie "Boolean Operations" w Figma?',
+        'odpowiedzi': ['Tworzenie animacji', 'Dodawanie efektów specjalnych', 'Łączenie, odejmowanie i przecinanie kształtów', 'Tworzenie komponentów wielokrotnego użytku'],
+        'odpok': 'Łączenie, odejmowanie i przecinanie kształtów'},
+{
+        'pytanie': 'Jakie narzędzie w Figma pozwala na tworzenie siatek i zarządzanie układem elementów?',
+        'odpowiedzi': ['Grids and Layout (Siatki i Układy)', 'Vector Networks (Sieci Wektorowe)', 'Slice and Export (Wycięcie i Eksport)', 'Slice and Export (Wycięcie i Eksport)'],
+        'odpok': 'Grids and Layout (Siatki i Układy)'},
+{
+        'pytanie': 'Do czego służy narzędzie "Slice" w Figma?',
+        'odpowiedzi': ['Do tworzenia instancji komponentów', 'Do eksportowania elementów jako oddzielne pliki graficzne', 'Do tworzenia zaawansowanych interakcji', 'Do rysowania niestandardowych kształtów'],
+        'odpok': 'Do eksportowania elementów jako oddzielne pliki graficzne'},
+{
+        'pytanie': 'Jakie narzędzie w Figma pozwala na tworzenie komponentów wielokrotnego użytku?',
+        'odpowiedzi': ['Instance (Instancja)', 'Auto Layout (Automatyczne Rozmieszczenie)', 'Select (Zaznaczanie)', 'Vector (Wektor)'],
+        'odpok': 'Instance (Instancja)'},
+{
+        'pytanie': 'Jakie narzędzie w Figma umożliwia dodawanie efektów takich jak cienie i rozmazy do elementów?',
+        'odpowiedzi': ['Constraints (Ograniczenia)', 'Pen (Pióro)', 'Blur and Effects (Rozmycie i Efekty)', 'Handoff (Przekazanie do Produkcji)'],
+        'odpok': 'Blur and Effects (Rozmycie i Efekty)'},
+{
+        'pytanie': 'Do czego służy narzędzie "Text Styles" w Figma?',
+        'odpowiedzi': ['Do tworzenia zaawansowanych kształtów', 'Do definiowania stylów tekstu, takich jak rodzaj czcionki i rozmiar', 'Do tworzenia interaktywnych prototypów', 'Do tworzenia układów responsywnych'],
+        'odpok': 'Do definiowania stylów tekstu, takich jak rodzaj czcionki i rozmiar'},
+{
+        'pytanie': 'Do czego służy narzędzie "Auto Layout" w Figma?',
+        'odpowiedzi': ['Do eksportowania projektu w różnych formatach', 'Do tworzenia animacji i efektów', 'Do automatycznego dostosowywania układu do zawartości', 'Do tworzenia interaktywnych komponentów'],
+        'odpok': 'Do automatycznego dostosowywania układu do zawartości'},
+{
+        'pytanie': 'Jak nazywa się narzędzie w Figma, które umożliwia tworzenie różnych podstawowych kształtów, takich jak prostokąty czy elipsy?',
+        'odpowiedzi': ['Pen (Pióro)', 'Vector (Wektor)', 'Shape (Kształt)', 'Move (Przesuwanie)'],
+        'odpok': 'Shape (Kształt)'},
+{
+        'pytanie': 'Jakie narzędzie w Figma umożliwia definiowanie reguł, jak elementy mają się zachowywać w zależności od zmiany rozmiaru ekranu lub ramki?',
+        'odpowiedzi': ['Alignment and Distribution (Wyrównywanie i Rozkładanie)', 'Handoff (Przekazanie do Produkcji)', 'Constraints (Ograniczenia)', 'Easing and Animation (Ułatwienia i Animacje)'],
+        'odpok': 'Constraints (Ograniczenia)'},
+{
+        'pytanie': 'Jakie narzędzie w Figma pozwala na tworzenie bibliotek z komponentami i stylami w celu zachowania spójności w projektach?',
+        'odpowiedzi': ['Instance (Instancja)', 'Style (Styl)', 'Auto Layout (Automatyczne Rozmieszczenie)', 'Vector (Wektor)'],
+        'odpok': 'Style (Styl)'},
+{
+        'pytanie': 'Do czego służy narzędzie "Handoff" w Figma?',
+        'odpowiedzi': ['Do tworzenia animacji i efektów specjalnych', 'Do generowania kodu CSS dla projektu', 'Do generowania kodu CSS dla projektu', 'Do automatycznego dostosowywania układu'],
+        'odpok': 'Do generowania kodu CSS dla projektu'},
+{
+        'pytanie': 'Które narzędzie w Figma umożliwia tworzenie animacji i efektów przejść między stanami?',
+        'odpowiedzi': ['Constraints (Ograniczenia)', 'Vector (Wektor)', 'Easing and Animation (Ułatwienia i Animacje)', 'Auto Layout (Automatyczne Rozmieszczenie)'],
+        'odpok': 'Easing and Animation (Ułatwienia i Animacje)'},
+{
+        'pytanie': 'Do czego służy narzędzie "Guides" w Figma?',
+        'odpowiedzi': ['Do czego służy narzędzie "Guides" w Figma?', 'Do rysowania kształtów i ścieżek za pomocą punktów kontrolnych', 'Do tworzenia linii przewodników, pomagających wyrównywać i pozycjonować elementy', 'Do automatycznego dostosowywania układu'],
+        'odpok': 'Do tworzenia linii przewodników, pomagających wyrównywać i pozycjonować elementy'},
+{
+        'pytanie': 'Jakie narzędzie w Figma umożliwia tworzenie kształtów i ścieżek poprzez łączenie, odejmowanie i przecinanie elementów?',
+        'odpowiedzi': ['Pen (Pióro)', 'Shape (Kształt)', 'Vector Networks (Sieci Wektorowe)', 'Text (Tekst)'],
+        'odpok': 'Pen (Pióro)'},
+]
+
+DANEF3 = [
+
+
+{
+        'pytanie': 'Który skrót klawiaturowy służy do zaznaczenia elementów za pomocą narzędzia Select?',
+        'odpowiedzi': ['Ctrl + V', 'Ctrl + A', 'Ctrl + S', 'Ctrl + D'],
+        'odpok': 'Ctrl + A'},
+{
+        'pytanie': 'Który skrót klawiaturowy służy do wywołania narzędzia Move (Przesuwanie)?',
+        'odpowiedzi': ['M', 'V', 'T', 'R'],
+        'odpok': 'V'},
+{
+        'pytanie': 'Który skrót klawiaturowy służy do duplikowania zaznaczonego elementu?',
+        'odpowiedzi': ['Ctrl + Z', 'Ctrl + C', 'Ctrl + V', 'Ctrl + D'],
+        'odpok': 'Ctrl + D'},
+{
+        'pytanie': 'Który skrót klawiaturowy służy do wywołania narzędzia Text (Tekst)?',
+        'odpowiedzi': ['T', 'V', 'R', 'P'],
+        'odpok': 'T'},
+{
+        'pytanie': 'Który skrót klawiaturowy służy do tworzenia sekcji?',
+        'odpowiedzi': ['Ctrl + R', 'Ctrl + S', 'Ctrl + L', 'Ctrl + E'],
+        'odpok': 'Ctrl + S'},
+{
+        'pytanie': 'Który skrót klawiaturowy służy do wywołania narzędzia Frame (Ramka)?',
+        'odpowiedzi': ['F', 'G', 'M', 'D'],
+        'odpok': 'F'},
+{
+        'pytanie': 'Który skrót klawiaturowy ułatwia wyrównanie horyzontalne (poziome) elementów?',
+        'odpowiedzi': ['ctrl + E', 'ctrl + H', 'alt + E', 'alt + H'],
+        'odpok': 'alt + H'},
+{
+        'pytanie': 'Który skrót klawiaturowy ułatwia wyrównanie wertykalne (pionowe) elementów?',
+        'odpowiedzi': ['alt + V', 'alt + P', 'ctrl + P', 'ctrl + V'],
+        'odpok': 'alt + V'},
+{
+        'pytanie': 'Przytrzymanie którego klawisza umożliwia zduplikowanie i jednoczesne przesunięcie zaznaczonego elementu?',
+        'odpowiedzi': ['ctrl', 'alt', '`', 'shift'],
+        'odpok': 'alt'},
+{
+        'pytanie': 'Który skrót klawiaturowy umożliwia wywołanie narzędzia Scale (Skala)?',
+        'odpowiedzi': ['S', 'B', 'F', 'K'],
+        'odpok': 'K'},
+{
+        'pytanie': 'Który skrót klawiaturowy umożliwia zaimportowanie obrazu do projektu?',
+        'odpowiedzi': ['ctrl + shift + P', 'alt + shift + P', 'ctrl + shift + K', 'alt + shift + K'],
+        'odpok': 'ctrl + shift + K'},
+]
