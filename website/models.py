@@ -10,9 +10,9 @@ class Points(db.Model):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique = True)
-    password = db.Column(db.String(150))
-    first_name = db.Column(db.String(150))
+    email = db.Column(db.String(150), unique = True, nullable=False)
+    password = db.Column(db.String(150), nullable=False)
+    first_name = db.Column(db.String(150), unique=True, nullable=False)
     points = db.relationship('Points')
     notes = db.relationship('Note')
     ranks = db.relationship('Rank')
@@ -21,7 +21,7 @@ class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(100))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('user.first_name'))
+    user_id = db.Column(db.String, db.ForeignKey('user.first_name'))
 
 class Rank(db.Model):
     id = db.Column(db.Integer, primary_key=True)

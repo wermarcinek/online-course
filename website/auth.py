@@ -32,6 +32,22 @@ def course():
 def projektowanie():
     return render_template('projektowanie.html', user=current_user)
 
+@auth.route('/proj1')
+def proj1():
+    return render_template('proj1.html', user=current_user)
+
+@auth.route('/proj2')
+def proj2():
+    return render_template('proj2.html', user=current_user)
+
+@auth.route('/proj3')
+def proj3():
+    return render_template('proj3.html', user=current_user)
+
+@auth.route('/proj4')
+def proj4():
+    return render_template('proj4.html', user=current_user)
+
 # ścieżka do podstrony z materiałami do nauki z programów graficznych
 
 @auth.route('/grafika')

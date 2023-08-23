@@ -4,8 +4,8 @@
 		<main>
                  <div class="mx-auto col-10 col-md-8 col-lg-6 fs-4">
                      <div class="text-center"><h2>QUIZ2 - parametry techniczne stron</h2><hr></div>
-                    {# : ))))))))))))) #}
-{# : )))))) #}      <form method="POST" action="{{ url_for('auth.test2') }}"> {#//pamiętać żeby zmienić tego auth. kurwa mać :))) #}
+
+      <form method="POST" action="{{ url_for('auth.test2') }}">
                     <p>{{ pytanie['pytanie'] }}</p>
                     {% for odpowiedz in pytanie['odpowiedzi'] %} <input type="radio"
                     name="odpowiedz" value="{{ odpowiedz }}" {% if 'answers' in session

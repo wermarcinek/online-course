@@ -136,7 +136,7 @@ DANEF1 = [
         'odpok': 'Do prezentowania projektu w sposób zbliżony do użytkowania'},
 {
         'pytanie': 'Jaka jest główna zaleta tworzenia prototypów w Figma?',
-        'odpowiedzi': ['Umożliwia testowanie kodu źródłowego', 'Pozwala na tworzenie interakcji i animacji', 'Pozwala na tworzenie interakcji i animacji', 'Generuje gotowe style CSS'],
+        'odpowiedzi': ['Umożliwia testowanie kodu źródłowego', 'Pozwala na tworzenie interakcji i animacji', 'Służy do tworzenia grafik 3D', 'Generuje gotowe style CSS'],
         'odpok': 'Pozwala na tworzenie interakcji i animacji'},
 {
         'pytanie': 'Jakie możliwości daje Figma w kontekście testowania projektów na różnych urządzeniach?',
@@ -214,7 +214,7 @@ DANEF2 = [
         'odpok': 'Easing and Animation (Ułatwienia i Animacje)'},
 {
         'pytanie': 'Do czego służy narzędzie "Guides" w Figma?',
-        'odpowiedzi': ['Do czego służy narzędzie "Guides" w Figma?', 'Do rysowania kształtów i ścieżek za pomocą punktów kontrolnych', 'Do tworzenia linii przewodników, pomagających wyrównywać i pozycjonować elementy', 'Do automatycznego dostosowywania układu'],
+        'odpowiedzi': ['Do tworzenia animacji','Do rysowania kształtów i ścieżek za pomocą punktów kontrolnych', 'Do tworzenia linii przewodników, pomagających wyrównywać i pozycjonować elementy', 'Do automatycznego dostosowywania układu'],
         'odpok': 'Do tworzenia linii przewodników, pomagających wyrównywać i pozycjonować elementy'},
 {
         'pytanie': 'Jakie narzędzie w Figma umożliwia tworzenie kształtów i ścieżek poprzez łączenie, odejmowanie i przecinanie elementów?',
