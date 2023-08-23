@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+     <div class="row align-items-center">
+        <div class="mx-auto col-10 col-md-8 col-lg-8">
+            <h2 class="text-center">Forum</h2>
+            <hr>
+            <div>
+                {% if user.is_authenticated %}
+                <form method="POST">
+                    <textarea name="edited_note" class="form-control">{{ note.data }}</textarea>
+                    <div class="row align-items-center px-3">
+                        <button type="submit" class="btn btn-dark mt-3 mb-3">Zapisz zmiany</button>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+            {% for note in notes|reverse %}
+                {% if note != edited_note %}
+                <ul class="list-group pb-2">
+                    {% if note.user_id == user.first_name %}
+                        <li class="list-group-item list-group-item-secondary fs-5">
+                    {% else %}
+                        <li class="list-group-item fs-5">
+                    {% endif %}
+                        {{ note.user_id }} <div class="fs-6">{{ note.date }}</div>
+                    </li>
+                    <li class="list-group-item">{{ note.data }}</li>
+                </ul>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

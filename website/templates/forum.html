@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row align-items-center">
    <div class="mx-auto col-10 col-md-8 col-lg-6">
-            <h2 class="text-center">FORUM</h2>
+            <h2 class="text-center">Forum</h2>
             <hr>
                 <div>
                     {% if user.is_authenticated %}
@@ -26,12 +26,13 @@
                       {{ note.user_id }}
               {% if note.user_id == user.first_name or current_user.first_name == 'admin' %}
                  <div class="float-end">
+                 <a href="{{ url_for('auth.edit_note', note_id=note.id) }}" class="btn btn-sm btn-light">Edytuj</a>
     <button
         type="button"
         class="btn btn-sm btn-light"
         data-bs-toggle="modal"
         data-bs-target="#deleteModal-{{ note.id }}">
-        USUŃ
+        Usuń
     </button>
     <div
         class="modal fade"

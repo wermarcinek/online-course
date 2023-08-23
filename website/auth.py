@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db  ##means from __init__.py import db
 from flask_login import login_user, login_required, logout_user, current_user
 from .questions import *
-
+import datetime
 
 auth = Blueprint('auth', __name__)
 
@@ -245,6 +245,30 @@ def delete_note(note_id):
         flash('Nie masz uprawnień żeby usunąć ten wpis.', category='error')
 
     return redirect(url_for('auth.forum'))
+
+@auth.route('/edit_note/<int:note_id>', methods=['GET', 'POST'])
+@login_required
+def edit_note(note_id):
+    note = Note.query.get_or_404(note_id)
+
+    act_date = datetime.datetime.now()
+    form_date = "%H:%M %d.%m.%Y"
+    done_date = act_date.strftime(form_date)
+
+    if request.method == 'POST':
+        new_data = request.form.get('edited_note')
+        if len(new_data) < 3:
+            flash('Wpis jest zbyt krótki!', category='error')
+        else:
+            note.data = new_data
+            note.date = done_date +" Edytowano"# Update the note data
+            db.session.commit()
+            flash('Zaktualizowano wpis!', category='success')
+            return redirect(url_for('auth.forum'))
+
+    all_notes = Note.query.filter(Note.id != note_id).all()
+
+    return render_template('edit_note.html', user=current_user, note=note, notes=all_notes)
 
 # ścieżka do strony z quizami
 

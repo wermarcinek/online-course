@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(100))
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    date = db.Column(db.String(150))
     user_id = db.Column(db.String, db.ForeignKey('user.first_name'))
 
 class Rank(db.Model):
