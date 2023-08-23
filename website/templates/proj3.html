@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block title %}Parametry techniczne{% endblock %}
+{% block content %}
+    <div class="container">
+            <div class="row align-items-center text-center">
+                <div class="mx-auto">
+                    <h2>Parametry techniczne</h2>
+                        <hr>
+                </div>
+            </div>
+                <div class="row g-5">
+                    <div class="col-md col-lg-4 order-md-last">
+                        <div class="sticky-top">
+                            <ul class="list-group mb-3">
+                                <li class="list-group-item d-flex justify-content-between lh-sm"> Spis treści</li>
+                                <li class="list-group-item border border-bottom-0 d-flex justify-content-between lh-sm"><a href="#1" class="link-secondary link-underline-opacity-25">Front-end</a></li>
+                                <li class="list-group-item border border-top-0 border-bottom-0 d-flex justify-content-between lh-sm"><a href="#2" class="link-secondary link-underline-opacity-25"> Rozmiary ekranów</a></li>
+                                <li class="list-group-item border border-top-0 border-bottom-0 d-flex justify-content-between lh-sm"><a href="#3" class="link-secondary link-underline-opacity-25"> Nagłówki</a></li>
+                                <li class="list-group-item border border-top-0 border-bottom-0 d-flex justify-content-between lh-sm"><a href="#3" class="link-secondary link-underline-opacity-25"> Paragrafy</a></li>
+                                <li class="list-group-item d-flex justify-content-between lh-sm"><a href="#4" class="link-secondary link-underline-opacity-25">Odstępy między zawartościąParagrafy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                        <div class="cold-md-7 col-lg-8">
+<h3 id="1">Front-end - implementacja wyglądu</h3>
+                            <p>Frontend składa się ze wszystkich widocznych na stronie elementów, to właśnie on jest za pobieranie danych od użytkownika i przekazywanie ich dalej do backendu.</p>
+                            <p class="mb-2">Do opracowania graficznego interfejsu użytkownika wykorzystywane są następujące narzędzi:. </p>
+                            <ul class="list-group-item">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="mb-3 me-auto">
+                                      <div class="fw-bold">HTML (Hypertext Markup Language): </div>
+                                Jest to język znaczników używany do tworzenia struktury strony internetowej. HTML definiuje elementy, takie jak nagłówki, paragrafy, listy, linki i wiele innych, które stanowią podstawową strukturę treści.
+                                    </div>
+                                     </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="mb-3 me-auto">
+                                      <div class="fw-bold">CSS (Cascading Style Sheets): </div>
+                                Jest to język używany do definiowania stylów i wyglądu strony internetowej. CSS pozwala na kontrolowanie kolorów, rozmiarów czcionek, marginesów, wypełnień, układów i innych aspektów wizualnych.
+                                    </div>
+                                     </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="mb-3 me-auto">
+                                      <div class="fw-bold">JavaScript: </div>
+                                To język programowania używany do tworzenia interaktywności i dynamicznych elementów na stronie internetowej. Dzięki JavaScriptowi można tworzyć efekty wizualne, obsługiwać interakcje użytkownika, manipulować treścią i komunikować się z serwerem.
+                                    </div>
+                                     </li>
+                            </ul>
+                            <hr>
+                            <h3 id="2">Rozmiary ekranów </h3>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">Mobilne (Mobile):</li>
+                                <li class="list-group-item">Szerokość: 320px - 480px</li>
+                                <li class="list-group-item">Ten punkt graniczny jest dla najmniejszych ekranów, takich jak smartfony w orientacji pionowej. W tym widoku strona powinna być prostsza i zoptymalizowana pod kątem ograniczonego miejsca.</li>
+                            </ul>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-secondary fw-bold">Tablet - pionowo (Portrait Tablet):</li>
+                                <li class="list-group-item">Szerokość: 481px - 768px</li>
+                                <li class="list-group-item">Dla tabletów trzymanych w orientacji pionowej. To wciąż stosunkowo mały ekran, dlatego interfejs powinien być dostosowany, aby treść była czytelna i elementy interaktywne nie były zbyt małe.</li>
+                            </ul>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">Tablet - poziomo (Landscape Tablet):</li>
+                                <li class="list-group-item">Szerokość: 769px - 1024px</li>
+                                <li class="list-group-item">Tablet trzymany w orientacji poziomej. W tym widoku można zacząć wykorzystywać więcej przestrzeni i umieścić więcej treści po bokach strony.</li>
+                            </ul>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-secondary fw-bold">Desktop (Small Desktop):</li>
+                                <li class="list-group-item">Szerokość: 1025px - 1200px</li>
+                                <li class="list-group-item">To szeroki zakres ekranów, który obejmuje mniejsze monitory i laptopy. Interfejs może być bardziej rozbudowany, ale nadal trzeba dbać o czytelność.</li>
+                            </ul>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">Duży Desktop (Large Desktop):</li>
+                                <li class="list-group-item">Szerokość: 1200px i więcej</li>
+                                <li class="list-group-item">Ten punkt graniczny jest dla dużych ekranów, takich jak monitory komputerowe. Strona może wykorzystać więcej przestrzeni i zapewnić bardziej rozbudowany układ.</li>
+                            </ul>
+                            <hr class="mt-4">
+                            <h3 id="2">Rozmiary nagłówków</h3>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">H1 (Nagłówek 1):</li>
+                                <li class="list-group-item">Wielkość: od 24px do 36px</li>
+                                <li class="list-group-item">Często używany na stronie głównej lub jako główny tytuł sekcji.</li>
+                            </ul>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">H2 (Nagłówek 2):</li>
+                                <li class="list-group-item">Wielkość: od 18px do 28px</li>
+                                <li class="list-group-item">Wykorzystywany jako tytuł sekcji lub podsekcji.</li>
+                            </ul>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">H3 (Nagłówek 3):</li>
+                                <li class="list-group-item">Wielkość: od 16px do 24px</li>
+                                <li class="list-group-item">Często stosowany do podtytułów i hierarchicznych tytułów.</li>
+                            </ul>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">H4 (Nagłówek 4):</li>
+                                <li class="list-group-item">Wielkość: od 14px do 20px</li>
+                                <li class="list-group-item">Mogą być stosowane do mniejszych tytułów, nagłówków sekcji, ale głównie służą organizowaniu treści.</li>
+                            </ul>
+                            <h3 id="3">Rozmiar tekstu</h3>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">Podstawowy Tekst:</li>
+                                <li class="list-group-item">Wielkość: od 16px do 18px</li>
+                                <li class="list-group-item">Główna treść tekstowa w atrtykułach i sekcjach.</li>
+                            </ul>
+                            <ul class="list-group my-3">
+                                <li class="list-group-item list-group-item-secondary fw-bold">Mniejszy Tekst:</li>
+                                <li class="list-group-item">Wielkość: od 14px do 16px</li>
+                                <li class="list-group-item">Używany do treści drugoplanowych, np. stopek, opisów obrazów etc.</li>
+                            </ul>
+                            <h3 id="4">Odstępy między zawartością strony</h3>
+                            <ul class="list-group-item">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="mb-3 me-auto">
+                                      <div class="fw-bold">Padding:</div>
+Padding to przestrzeń wewnętrzna wokół elementu, oddzielająca zawartość elementu od jego granic. Padding kontroluje odstępy między zawartością elementu a jego granicami.
+                                    </div>
+                                     </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="mb-3 me-auto">
+                                      <div class="fw-bold">Margines (Margin):</div>
+Margines to przestrzeń zewnętrzna wokół elementu, oddzielająca go od innych elementów. Marginesy kontrolują odstępy między elementami i przestrzeń między elementem a krawędziami kontenera (np. sekcji, diva).
+                                    </div>
+                                     </li>
+                            </ul>
+                        </div>
+                </div>
+    </div>
+{% endblock %}

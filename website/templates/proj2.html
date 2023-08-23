@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}Responsywność{% endblock %}
+{% block content %}
+    <div class="container">
+<div class="row align-items-center text-center">
+    <div class="mx-auto">
+    <h2>Responsywność stron internetowych</h2><hr>
+</div></div>
+<div class="row g-5">
+    <div class="col-md col-lg-4 order-md-last">
+        <div class="sticky-top">
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm"> Spis treści</li>
+            <li class="list-group-item border border-bottom-0 d-flex justify-content-between lh-sm"><a href="#1" class="link-secondary link-underline-opacity-25">Responsywność</a></li>
+            <li class="list-group-item border border-top-0 border-bottom-0 d-flex justify-content-between lh-sm"><a href="#2" class="link-secondary link-underline-opacity-25"> Media Queries</a></li>
+            <li class="list-group-item border border-top-0 border-bottom-0 d-flex justify-content-between lh-sm"><a href="#3" class="link-secondary link-underline-opacity-25"> Podejście Mobile-first</a></li>
+            <li class="list-group-item d-flex justify-content-between lh-sm"><a href="#4" class="link-secondary link-underline-opacity-25"> Pojęcia RWD</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="cold-md-7 col-lg-8">
+<h3 id="1">Responsywność</h3>
+<p>Responsywne projektowanie stron internetowych, z angielskiego Responsive Web Design (RWD), to zaawansowana metoda tworzenia stron internetowych, które automatycznie dostosowują swój układ oraz wygląd do wielkości okna przeglądarki, na której są wyświetlane.</p>
+    <p>Strony internetowe tworzone przy użyciu responsywnego projektowania charakteryzują się uniwersalnością. Innymi słowy, niezależnie od urządzenia, na którym użytkownik przegląda stronę – czy to na komputerze, czy na urządzeniu mobilnym – prezentuje się ona w spójny sposób. Dzięki temu użytkownicy doświadczają jednolitego i wygodnego interfejsu, niezależnie od preferowanego sprzętu do przeglądania treści.</p>
+    <hr>
+<h4 id="2">Media Queries</h4>
+       <p> Do implementacji responsywności na stronach służą Media Queries, są to reguły w arkuszach stylów (CSS), umożliwiające zastosowanie różnych stylów w zależności od szerokości, wysokości czy też orientacji ekranu, na którym wyświetlana będzie zawartość.</p>
+        <hr>
+<h4 id="3"> Podejście Mobile-first</h4>
+        <p>Z racji na rosnący z roku na rok ruch internetowy generowany przez urządzenia mobilne powstało podejście do projektowania nazwane Mobile-first Design, w którym projektowanie rozpoczyna się od szerokości ekranów typowych dla urządzeń mobilnych.</p>
+        <p>
+            Podejście mobile-first ma wiele zalet, jednak najważniejszą z nich jest to, że skupienie się na tworzeniu interfejsu użytkownika dla mniejszych ekranów wymusza na projektantach i deweloperach uproszczenie projektu, eliminowanie zbędnych elementów i skupienie się na najważniejszych funkcjach. To może przyczynić się do lepszej użyteczności i szybszego ładowania.
+        </p>
+<h4 id="4">Pojęcia związane z responsywnością</h4>
+<ul class="list-group-item">
+     <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Frameworki CSS: </div>
+Frameworki takie jak Bootstrap lub Foundation oferują gotowe komponenty, siatkę i style, które ułatwiają tworzenie responsywnych projektów bez konieczności pisania wszystkiego od zera.
+    </div>
+     </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Fluid Grids:</div>
+Elastyczne siatki, które opierają się na proporcjach procentowych zamiast stałych jednostek takich jak piksele. To pozwala elementom na stronie dostosowywać się do dostępnej przestrzeni na różnych urządzeniach.
+    </div>
+     </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Viewport:</div>
+Okno przeglądania, czyli obszar na ekranie, w którym wyświetlana jest strona internetowa. Meta tag viewport pozwala kontrolować zachowanie przeglądarki na urządzeniach mobilnych, określając zalecaną skalę, rozmiar widoku i inne parametry.<br>
+Tag HTML &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt; pozwala kontrolować sposób wyświetlania strony na różnych urządzeniach. Parametr width=device-width oznacza, że szerokość widoku odpowiada szerokości urządzenia.
+
+    </div>
+     </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Breakpoints:</div>
+Punkty graniczne w responsywnym projekcie, w których określa się zmiany w układzie lub stylach strony w zależności od szerokości ekranu. W tym momencie układ może ulegać zmianie, aby lepiej pasował do różnych rozmiarów ekranów.
+    </div>
+     </li>
+</ul>
+    </div>
+            </div>
+</div>
+    </div>
+{% endblock %}
