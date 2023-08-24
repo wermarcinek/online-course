@@ -54,6 +54,18 @@ def proj4():
 def grafika():
     return render_template('grafika.html', user=current_user)
 
+@auth.route('/graf1')
+def graf1():
+    return render_template('graf1.html', user=current_user)
+
+@auth.route('/graf2')
+def graf2():
+    return render_template('graf2.html', user=current_user)
+
+@auth.route('/graf3')
+def graf3():
+    return render_template('graf3.html', user=current_user)
+
 # śledzenie postępów
 
 @auth.route('/progress')
@@ -212,6 +224,9 @@ def refresh_rank():
 
 @auth.route('/forum', methods=['GET', 'POST'])
 def forum():
+    act_date = datetime.datetime.now()
+    form_date = "%H:%M %d.%m.%Y"
+    done_date = act_date.strftime(form_date)
 
     if request.method == 'POST':
         note = request.form.get('note')  # Gets the note from the HTML
@@ -219,7 +234,7 @@ def forum():
         if len(note) < 3:
             flash('Wpis jest zbyt krótki!', category='error')
         else:
-            new_note = Note(data=note, user_id=current_user.first_name)  # providing the schema for the note
+            new_note = Note(date=done_date, data=note, user_id=current_user.first_name)  # providing the schema for the note
             db.session.add(new_note)  # adding the note to the database
             db.session.commit()
             flash('Dodano wpis!', category='success')
@@ -295,21 +310,30 @@ def test1():
     nazwa='QUIZ1 - wprowadzenie'
     if 'question_index' not in session:
         session['question_index'] = 0
-        session['points'] = 0
+        session['points'] = []
+        session['answered_questions'] = []
 
     if request.method == 'POST':
         odpowiedzi = request.form
         current_question = DANE1[session['question_index']]
 
         if odpowiedzi.get('odpowiedz') == current_question['odpok']:
-            session['points'] += 1
+            x = 1
+            session['points'].append(x)
+        else:
+            x = 0
+            session['points'].append(x)
 
+        session['answered_questions'].append(session['question_index'])
         session['question_index'] += 1
 
+
         if session['question_index'] >= len(DANE1):
-            points = session['points']
+            points = sum(session['points'])
+            answered_questions = session['answered_questions']
             session.pop('question_index')
             session.pop('points')
+            session.pop('answered_questions')
 
             if current_user.is_authenticated:
                 new_points = Points(user_id=current_user.id, points=points, data=nazwa)  # Provide the user_id
@@ -317,11 +341,37 @@ def test1():
                 db.session.commit()
 
             flash('Liczba poprawnych odpowiedzi, to: {0}'.format(points), category='success')
-            return redirect(url_for('auth.progress'))
+            if current_user.is_authenticated:
+                return redirect(url_for('auth.progress'))
+            else:
+                return redirect(url_for('auth.rank'))
 
     if 'question_index' in session:
         current_question = DANE1[session['question_index']]
-        return render_template('test1.html', pytanie=current_question, user=current_user)
+        numer_pyt = session['question_index']
+        liczb_pyt = len(DANE1)
+        return render_template('test1.html', liczb_pyt=liczb_pyt, numer_pyt=numer_pyt, pytanie=current_question, user=current_user)
+
+
+@auth.route('/test1/previous', methods=['GET', 'POST'])
+def previous_question():
+    if 'question_index' in session and 'answered_questions' in session:
+        if len(session['answered_questions']) > 0:
+            session['question_index'] = session['answered_questions'].pop()
+            session['points'].pop()
+            return redirect(url_for('auth.test1'))
+
+    return redirect(url_for('auth.test1'))
+
+@auth.route('/reset_quizow')
+def reset_quizow():
+    if 'question_index' not in session:
+        return redirect(url_for('auth.quiz'))
+    else:
+        session.pop('question_index')
+        session.pop('points')
+        session.pop('answered_questions')
+        return redirect(url_for('auth.quiz'))
 
 
 # quiz2

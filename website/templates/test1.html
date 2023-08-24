@@ -4,7 +4,24 @@
 		<main>
                  <div class="mx-auto col-10 col-md-8 col-lg-6 fs-4">
                      <div class="text-center"><h2>QUIZ1 - wprowadzenie</h2><hr></div>
+{% for i in range(liczb_pyt) %}
+            <div  >
+                    {% if i < numer_pyt %}
+                    <div style="background-color:green; color:black;" >
+                        {{ i + 1 }}
+                    </div>
+                    {%elif i == numer_pyt%}
+                    <div style="background-color:gold; color:black;" >
+                        {{ i + 1 }}
+                    </div>
+                    {% else %}
+                    <div style="background-color: red; color: green;" >
+                        {{ i + 1 }}
+                    </div>
+                    {% endif %}
 
+                </div>
+                {% endfor %}
 				<form method="POST" action="{{ url_for('auth.test1') }}">
         <p>{{ pytanie['pytanie'] }}</p>
                     {% for odpowiedz in pytanie['odpowiedzi'] %}
@@ -12,9 +29,16 @@
                    {% if 'answers' in session and session['answers'].get(loop.index0) == odpowiedz %}checked{% endif %}>
             {{ odpowiedz }}<br>
         {% endfor %}
-                    <div class="d-flex justify-content-center">
-                        <input class="mt-3 btn btn-dark btn-lg" type="submit" value="Next">
+                <div class="d-flex justify-content-between mt-3">
+                    <div>
+                        {% if pytanie and 'question_index' in session %}
+                            <a class="btn btn-secondary btn-lg " href="{{ url_for('auth.previous_question') }}">Poprzednie pytanie</a>
+                        {% endif %}
                     </div>
+                    <div>
+                        <input class="btn btn-dark btn-lg" type="submit" value="Następnie pytanie">
+                    </div>
+                </div>
                 </form>
 
 			</div>
